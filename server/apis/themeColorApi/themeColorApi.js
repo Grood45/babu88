@@ -39,7 +39,21 @@ const themeColorApi = (themeColorCollection) => {
     try {
       const colors = await themeColorCollection.findOne();
       if (!colors) {
-        return res.status(404).json({ error: "No colors found" });
+        // Return default structure if not found, instead of 404
+        return res.status(200).json({
+          mainBackgroundColor: "",
+          mainBackgroundTextColor: "",
+          secondaryButtonBackgroundColor: "",
+          secondaryButtonTextColor: "",
+          secondaryColor: "",
+          noticeBackgroundColor: "",
+          noticeTextColor: "",
+          mobileSidebarMenuBackgroundColor: "",
+          mobileSidebarMenuTextColor: "",
+          mobileSidebarMenuIconColor: "",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        });
       }
       res.status(200).json(colors);
     } catch (err) {

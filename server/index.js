@@ -190,50 +190,50 @@ async function run() {
     // console.log("db connected")
 
     // Collections
-    const usersCollection = client.db("babu88").collection("users");
-    const depositsCollection = client.db("babu88").collection("deposits");
-    const withdrawsCollection = client.db("babu88").collection("withdraws");
-    const promotionCollection = client.db("babu88").collection("promotions");
-    const categoriesCollection = client.db("babu88").collection("categories");
-    const pagesCollection = client.db("babu88").collection("pages");
+    const usersCollection = client.db("babu88roni").collection("users");
+    const depositsCollection = client.db("babu88roni").collection("deposits");
+    const withdrawsCollection = client.db("babu88roni").collection("withdraws");
+    const promotionCollection = client.db("babu88roni").collection("promotions");
+    const categoriesCollection = client.db("babu88roni").collection("categories");
+    const pagesCollection = client.db("babu88roni").collection("pages");
     const homeControlsCollection = client
-      .db("babu88")
+      .db("babu88roni")
       .collection("homeControls");
-    const kycCollection = client.db("babu88").collection("kyc");
+    const kycCollection = client.db("babu88roni").collection("kyc");
     const withdrawPaymentMethodCollection = client
-      .db("babu88")
+      .db("babu88roni")
       .collection("withdraw-payment-methods");
     const withdrawTransactionsCollection = client
-      .db("babu88")
+      .db("babu88roni")
       .collection("withdrawTransactions");
     const paymentNumberCollection = client
-      .db("babu88")
+      .db("babu88roni")
       .collection("payment-numbers");
     const paymentMethodCollection = client
-      .db("babu88")
+      .db("babu88roni")
       .collection("payment-methods");
     const depositPaymentMethodCollection = client
-      .db("babu88")
+      .db("babu88roni")
       .collection("deposit-payment-methods");
     const depositPromotionsCollection = client
-      .db("babu88")
+      .db("babu88roni")
       .collection("depositPromotions");
     const depositTransactionsCollection = client
-      .db("babu88")
+      .db("babu88roni")
       .collection("depositTransactions");
-    const gamesCollection = client.db("babu88").collection("games");
-    const matchesCollection = client.db("babu88").collection("matches");
+    const gamesCollection = client.db("babu88roni").collection("games");
+    const matchesCollection = client.db("babu88roni").collection("matches");
 
     const featuresImageCollection = client
-      .db("babu88")
+      .db("babu88roni")
       .collection("FeaturesImage");
-    const themeColorCollection = client.db("babu88").collection("ThemeColor");
-    const socialLinksCollection = client.db("babu88").collection("socialLinks");
+    const themeColorCollection = client.db("babu88roni").collection("ThemeColor");
+    const socialLinksCollection = client.db("babu88roni").collection("socialLinks");
 
     // Add settings (welcomeBonus) collection
-    const settingsCollection = client.db("babu88").collection("settings");
+    const settingsCollection = client.db("babu88roni").collection("settings");
     // Attach to app.locals for access in routers
-    app.locals.db = client.db("babu88");
+    app.locals.db = client.db("babu88roni");
     app.locals.settingsCollection = settingsCollection;
 
     // APIs
