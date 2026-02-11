@@ -1,0 +1,63 @@
+# FETCH FAILED PROBLEM FIX (Step-by-Step)
+
+Apne agar port 8000 kar diya hai, to ye steps follow karein. 99% problem yahi hai ki AWS par port open nahi hai ya configuration match nahi ho rahi.
+
+## STEP 1: AWS Security Group Check (Sabse Important)
+
+Sabse pehle check karein ki AWS par Port 8000 open hai ya nahi.
+
+1.  AWS Console me login karein.
+2.  **EC2** Dashboard par jayein.
+3.  Apne Instance ko select karein aur niche **Security** tab par click karein.
+4.  **Security Groups** (e.g., `sg-xxxx`) par click karein.
+5.  **Edit Inbound Rules** par click karein.
+6.  **Add Rule** karein:
+    *   **Type**: Custom TCP
+    *   **Port Range**: `8000`
+    *   **Source**: `Anywhere-IPv4` (`0.0.0.0/0`)
+7.  **Save Rules** par click karein.
+
+(Agar ye nahi kiya to Bahar se koi connect nahi kar payega).
+
+## STEP 2: Server Par Port Check Karein
+
+Ab server par check karte hain ki backend sach me 8000 par chal raha hai ya nahi.
+
+1.  Server par login karein:
+    ```bash
+    ssh -i key.pem ubuntu@ip
+    ```
+2.  Backend server ka `.env` file check karein:
+    ```bash
+    cat /var/www/babu88/server/.env
+    ```
+    Kya waha `PORT=8000` likha hai? Agar `5001` hai to usko change karein:
+    ```bash
+    nano /var/www/babu88/server/.env
+    ```
+    Change karke `Ctrl+O` -> `Enter` -> `Ctrl+X` dabayein.
+
+3.  PM2 Restart karein:
+    ```bash
+    pm2 restart babu88-server
+    ```
+
+## STEP 3: Frontend Configuration update
+
+Ab frontend ko batana padega ki port 8000 use karna hai.
+
+1.  Client ka `.env` file open karein:
+    ```bash
+    nano /var/www/babu88/client/.env
+    ```
+2.  URL update karein (Port 8000 lagayein):
+    ```env
+    VITE_BASE_API_URL=http://11crickex.live:8000
+    ```
+3.  Frontend Dobara Build Karein:
+    ```bash
+    cd /var/www/babu88/client
+    npm run build
+    ```
+
+In teeno steps ke baad aapka site chal jayega.
