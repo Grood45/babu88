@@ -136,6 +136,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // MongoDB setup
 const uri = process.env.DB_URI;
+
+if (!uri) {
+  console.error("ERROR: DB_URI is not defined in environment variables.");
+  process.exit(1);
+}
+
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
