@@ -154,8 +154,8 @@ const client = new MongoClient(uri, {
   },
 });
 
-// Serve static files from the "Uploads" directory
-app.use("/uploads", express.static(path.join(__dirname, "Uploads")));
+// Serve static files from the "uploads" directory
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes for image upload and delete
 app.post("/upload", upload.single("image"), (req, res) => {
